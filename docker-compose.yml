@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+    express-app:
+        image: express-app
+        restart: unless-stopped
+        build: .
+        ports:
+        - 3000:3000
+        volumes:
+        - ./:/usr/src/app
+    client-app:
+        image: client-app
+        restart: unless-stopped
+        build: client
+        ports:
+        - 4200:4200
+        volumes:
+        - ./client:/usr/src/app
